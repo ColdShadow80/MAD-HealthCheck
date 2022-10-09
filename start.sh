@@ -11,3 +11,8 @@ source ./config.ini
   ##hardcoded path, to be reviewed later
  	df --output=pcent /dev/vda3 | tr -dc '0-9'
  }
+ 
+ function most_recent_file()
+ {
+  ls $MAD_path/logs -Art | tail -1
+ }
