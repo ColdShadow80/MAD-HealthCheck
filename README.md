@@ -3,5 +3,7 @@
 
 
 Requires jq to post messages to Discord
-Debian: 
+
+**Debian:**
+
 `sudo apt-get -y install jq`
