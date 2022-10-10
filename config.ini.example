@@ -1,2 +1,4 @@
-# MAD stuff
-MAD_path = /home/your_user/mad      #Enter full path here
+## MAD stuff
+
+MADpath="/home/mad/logs/" ##Enter full path here
+
