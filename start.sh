@@ -1,7 +1,7 @@
 #!/bin/bash
 source config.ini
 
-MAXerrors=15
+MAXerrors=5
 currentDate=$(date +'%Y-%m-%d %T')
 ##echo $currentDate
 
@@ -46,11 +46,14 @@ echo $errors
 ##check_errors
 
 if (( $(check_errors) > $MAXerrors )); then
-    echo "$currentDate - Restarting scanner, found $(check_errors) errors of a maximum of $MAXerrors possible"
-    $script_full_path/tools/discord.sh --webhook-url $Webhook_Warning --username HealthCheck --avatar $Icon_Warning --description "$currentDate - Restarting scanner, found $(check_errors) errors of a maximum of $MAXerrors possible"
+    echo "$currentDate - Restarting scanner, found $(check_errors) errors of a maximum of $MAXerrors allowed"
+
+    $script_full_path/tools/discord.sh --webhook-url $Webhook_Warning --username "HealthCheck" --avatar $Icon_Warning --description "$currentDate - Restarting scanner, found $(check_errors) errors of a maximum of $MAXerrors allowed"
+
     $RebootScript
 else
     echo "$currentDate - $(check_errors) errors found, nothing to do"
-    $script_full_path/tools/discord.sh --webhook-url $Webhook_Info --username HealthCheck --avatar $Icon_Info --description "$currentDate - $(check_errors) errors found, nothing to do"
+
+    $script_full_path/tools/discord.sh  --webhook-url $Webhook_Info --username "HealthCheck" --avatar $Icon_Info --description "$currentDate - $(check_errors) errors found, nothing to do"
 
 fi
